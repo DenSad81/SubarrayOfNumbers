@@ -14,12 +14,10 @@ class Program
         int arrayMaxValue = 3;
         int quantityOfVolumeForOneDigit = 2;
         int rowForPrintArray = 0;
-        int rowForPrintLokalMax = 1;
-        int rowForPrintRepit = 3;
         int rowForPrintRezult = 5;
         int countRowForPrintRepit = 0;
-        int quantityOfRepit = 0;
-        int quantityOfRepitMax = 0;
+        int counter = 0;
+        int maxCounter = 0;
         int digitWhouIsMaxRepit = 0;
 
         for (int i = 0; i < array.Length; i++)
@@ -34,31 +32,21 @@ class Program
         for (int i = 1; i < array.Length; i++)
         {
             if (array[i - 1] == array[i])
+                counter++;
+
+            if (array[i - 1] != array[i])
+                counter = 0;
+
+            if (counter > maxCounter)
             {
-                quantityOfRepit++;
-                Console.SetCursorPosition((i) * quantityOfVolumeForOneDigit, rowForPrintLokalMax);
-                Console.Write(quantityOfRepit);
-            }
-
-            if ((array[i - 1] != array[i] || i == array.Length - 1) && (quantityOfRepit > 0))
-            {
-                Console.SetCursorPosition(0, rowForPrintRepit + countRowForPrintRepit);
-                Console.WriteLine(array[i - 1] + " " + quantityOfRepit);
-                countRowForPrintRepit++;
-
-                if (quantityOfRepit > quantityOfRepitMax)
-                {
-                    quantityOfRepitMax = quantityOfRepit;
-                    digitWhouIsMaxRepit = array[i - 1];
-                }
-
-                quantityOfRepit = 0;
+                maxCounter = counter;
+                digitWhouIsMaxRepit = array[i - 1];
             }
         }
 
         Console.WriteLine();
         Console.SetCursorPosition(0, rowForPrintRezult + countRowForPrintRepit);
-        Console.WriteLine("Число " + digitWhouIsMaxRepit + "   Максимально повторяется раз " + quantityOfRepitMax);
+        Console.WriteLine("Число " + digitWhouIsMaxRepit + "   Максимально повторяется раз " + maxCounter);
         Console.WriteLine();
     }
 }

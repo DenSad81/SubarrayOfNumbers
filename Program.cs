@@ -8,45 +8,29 @@ class Program
 {
     static void Main(string[] args)
     {
-        int[] array = new int[30];
-        Random random = new Random();
-        int arrayMinValue = 0;
-        int arrayMaxValue = 3;
-        int quantityOfVolumeForOneDigit = 2;
-        int rowForPrintArray = 0;
-        int rowForPrintRezult = 5;
-        int countRowForPrintRepit = 0;
-        int counter = 0;
-        int maxCounter = 0;
+        int[] array = { 2, 2, 2, 4, 4, 4 };
+        int quantityOfRepit = 0;
+        int quantityOfRepitMax = 0;
         int digitWhouIsMaxRepit = 0;
 
         for (int i = 0; i < array.Length; i++)
-            array[i] = random.Next(arrayMinValue, arrayMaxValue);
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            Console.SetCursorPosition(i * quantityOfVolumeForOneDigit, rowForPrintArray);
             Console.Write(array[i]);
-        }
 
         for (int i = 1; i < array.Length; i++)
         {
             if (array[i - 1] == array[i])
-                counter++;
+                quantityOfRepit++;
+            else
+                quantityOfRepit = 0;
 
-            if (array[i - 1] != array[i])
-                counter = 0;
-
-            if (counter > maxCounter)
+            if (quantityOfRepit > quantityOfRepitMax)
             {
-                maxCounter = counter;
+                quantityOfRepitMax = quantityOfRepit;
                 digitWhouIsMaxRepit = array[i - 1];
             }
         }
 
         Console.WriteLine();
-        Console.SetCursorPosition(0, rowForPrintRezult + countRowForPrintRepit);
-        Console.WriteLine("Число " + digitWhouIsMaxRepit + "   Максимально повторяется раз " + maxCounter);
-        Console.WriteLine();
+        Console.WriteLine("Число " + digitWhouIsMaxRepit + "   Максимально повторяется раз " + quantityOfRepitMax);
     }
 }

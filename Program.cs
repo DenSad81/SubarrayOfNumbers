@@ -8,7 +8,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        int[] array = new int[40];
+        int[] array = new int[30];
         Random random = new Random();
         int arrayMinValue = 0;
         int arrayMaxValue = 3;
@@ -40,22 +40,19 @@ class Program
                 Console.Write(quantityOfRepit);
             }
 
-            if ((array[i - 1] != array[i]) || i == array.Length - 1)
+            if ((array[i - 1] != array[i] || i == array.Length - 1) && (quantityOfRepit > 0))
             {
-                if (quantityOfRepit > 0)
+                Console.SetCursorPosition(0, rowForPrintRepit + countRowForPrintRepit);
+                Console.WriteLine(array[i - 1] + " " + quantityOfRepit);
+                countRowForPrintRepit++;
+
+                if (quantityOfRepit > quantityOfRepitMax)
                 {
-                    Console.SetCursorPosition(0, rowForPrintRepit + countRowForPrintRepit);
-                    Console.WriteLine(array[i - 1] + " " + quantityOfRepit);
-                    countRowForPrintRepit++;
-
-                    if (quantityOfRepit > quantityOfRepitMax)
-                    {
-                        quantityOfRepitMax = quantityOfRepit;
-                        digitWhouIsMaxRepit = array[i - 1];
-                    }
-
-                    quantityOfRepit = 0;
+                    quantityOfRepitMax = quantityOfRepit;
+                    digitWhouIsMaxRepit = array[i - 1];
                 }
+
+                quantityOfRepit = 0;
             }
         }
 

@@ -31,50 +31,32 @@ class Program
             Console.Write(array[i]);
         }
 
-        int posInArray = 1;
-
-        while (posInArray < array.Length)//для проверяющих - цикл for использовать не могу, т.к. posInArray использую после цикла
+        for (int i = 1; i < array.Length; i++)
         {
-            if (array[posInArray - 1] == array[posInArray])
+            if (array[i - 1] == array[i])
             {
                 quantityOfRepit++;
-                Console.SetCursorPosition((posInArray) * quantityOfVolumeForOneDigit, rowForPrintLokalMax);
+                Console.SetCursorPosition((i) * quantityOfVolumeForOneDigit, rowForPrintLokalMax);
                 Console.Write(quantityOfRepit);
             }
-            else
+
+            if ((array[i - 1] != array[i]) || i == array.Length - 1)
             {
                 if (quantityOfRepit > 0)
                 {
                     Console.SetCursorPosition(0, rowForPrintRepit + countRowForPrintRepit);
-                    Console.WriteLine(array[posInArray - 1] + " " + quantityOfRepit);
+                    Console.WriteLine(array[i - 1] + " " + quantityOfRepit);
                     countRowForPrintRepit++;
 
                     if (quantityOfRepit > quantityOfRepitMax)
                     {
                         quantityOfRepitMax = quantityOfRepit;
-                        digitWhouIsMaxRepit = array[posInArray-1];
+                        digitWhouIsMaxRepit = array[i - 1];
                     }
 
                     quantityOfRepit = 0;
                 }
             }
-
-            posInArray++;
-        }
-
-        if (quantityOfRepit > 0)//для проверяющих - проверка последнего элемента
-        {
-            Console.SetCursorPosition(0, rowForPrintRepit + countRowForPrintRepit);
-            Console.WriteLine(array[posInArray - 1] + " " + quantityOfRepit);
-            countRowForPrintRepit++;
-
-            if (quantityOfRepit > quantityOfRepitMax)
-            {
-                quantityOfRepitMax = quantityOfRepit;
-                digitWhouIsMaxRepit = array[posInArray-1];
-            }
-
-            quantityOfRepit = 0;
         }
 
         Console.WriteLine();

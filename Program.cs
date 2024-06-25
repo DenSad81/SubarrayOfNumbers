@@ -33,7 +33,7 @@ class Program
 
         int posInArray = 1;
 
-        while (posInArray < array.Length)
+        while (posInArray < array.Length)//для проверяющих - цикл for использовать не могу, т.к. posInArray использую после цикла
         {
             if (array[posInArray - 1] == array[posInArray])
             {
@@ -62,7 +62,7 @@ class Program
             posInArray++;
         }
 
-        if (quantityOfRepit > 0)
+        if (quantityOfRepit > 0)//для проверяющих - проверка последнего элемента
         {
             Console.SetCursorPosition(0, rowForPrintRepit + countRowForPrintRepit);
             Console.WriteLine(array[posInArray - 1] + " " + quantityOfRepit);
